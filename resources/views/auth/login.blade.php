@@ -5,7 +5,7 @@
   <title>ログインフォーム</title>
 </head>
 <body>
-  @isset($errors) {{--調べる--}}
+  @isset($errors) {{--null  「空」だったら下のメッセージ--}}
     <p style="color:red">{{ $errors->first('message') }}</p>
   @endisset
     <form name="loginform" action="/login" method="post">
