@@ -21,16 +21,9 @@ Route::get('/', function () {
 //     return view('home');
 // });
 
-Route::get('/admin/news/create', [App\Http\Controllers\Admin\ControllerNewsController::class, 'create']);
-// Route::group(['prefix' => 'admin'], function() {
-//     Route::get('news/create', 'Adimin\NewsController@add');   // workページに割り当て
-//     Route::get('profile/create', 'Adimin\ProfileController@add'); // profile create actionに割り当て
-//     Route::get('profile/edit', 'Adimin\ProfileController@add');   // profile edit actionに割り当て
-// });
-
 // Route::get('/register', [App\Http\Controllers\RegisterController::class, 'create'])
 //     ->middleware('guest')
-//     ->name('login');
+//     ->name('register');
 // Route::post('/register', [App\Http\Controllers\RegisterController::class, 'store'])
 // ->middleware('guest');
 
@@ -43,3 +36,14 @@ Route::get('/admin/news/create', [App\Http\Controllers\Admin\ControllerNewsContr
 // Route::get('/logout', [App\Http\Controllers\LoginController::class, 'logout'])
 //     ->middleware('auth')
 //     ->name('logout');
+
+// Route::get('/admin/news/create', [App\Http\Controllers\Admin\ControllerNewsController::class, 'create']);
+
+// Route::group(['prefix' => 'admin'], function() {
+//     Route::get('news/create', 'Adimin\NewsController@add');   // workページに割り当て
+//     Route::get('profile/create', 'Adimin\ProfileController@add'); // profile create actionに割り当て
+//     Route::get('profile/edit', 'Adimin\ProfileController@add');   // profile edit actionに割り当て
+// });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
