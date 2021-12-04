@@ -23,7 +23,7 @@ Route::get('/home', function () {
 
 Route::get('/register', [App\Http\Controllers\RegisterController::class, 'create'])
     ->middleware('guest')
-    ->name('login');
+    ->name('register');
 Route::post('/register', [App\Http\Controllers\RegisterController::class, 'store'])
 ->middleware('guest');
 
