@@ -7,12 +7,14 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+// use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
     public function create()
     {
-        return view('regist.register');
+        // return view('regist.register');
+        return view('auth.regist.register');
     }
 
     public function store(Request $request)
@@ -29,6 +31,6 @@ class RegisterController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return view('regist.complete', compact('user'));
+        return view('auth.regist.complete', compact('user'));
     }
 }

@@ -13,11 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/home', function () {
+// Route::get('/home', function () {
+//     return view('home');
+// });
+
+Route::get('/', function () {
     return view('home');
 });
 
@@ -36,3 +40,13 @@ Route::post('/login', [App\Http\Controllers\LoginController::class, 'authenticat
 Route::get('/logout', [App\Http\Controllers\LoginController::class, 'logout'])
     ->middleware('auth')
     ->name('logout');
+
+
+// クライアントページへアクセス
+Route::get('/mypage_client', [App\Http\Controllers\Mypage\ClientController::class, 'index']);
+// Route::post('/my_page', 'My_pageController@my_page_update');
+
+// デザイナーページへアクセス
+Route::get('/mypage_designer', [App\Http\Controllers\Mypage\DesignerController::class, 'index']);
+
+
