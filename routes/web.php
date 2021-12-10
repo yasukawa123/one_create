@@ -25,19 +25,22 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/register', [App\Http\Controllers\RegisterController::class, 'create'])
+// 新規登録
+Route::get('/register', [App\Http\Controllers\Admin\RegisterController::class, 'create'])
     ->middleware('guest')
     ->name('register');
-Route::post('/register', [App\Http\Controllers\RegisterController::class, 'store'])
+Route::post('/register', [App\Http\Controllers\Admin\RegisterController::class, 'store'])
 ->middleware('guest');
 
-Route::get('/login', [App\Http\Controllers\LoginController::class, 'index'])
+// ログイン
+Route::get('/login', [App\Http\Controllers\Admin\LoginController::class, 'index'])
     ->middleware('guest')
     ->name('login');
-Route::post('/login', [App\Http\Controllers\LoginController::class, 'authenticate'])
+Route::post('/login', [App\Http\Controllers\Admin\LoginController::class, 'authenticate'])
 ->middleware('guest');
 
-Route::get('/logout', [App\Http\Controllers\LoginController::class, 'logout'])
+//ログアウト
+Route::get('/logout', [App\Http\Controllers\Admin\LoginController::class, 'logout'])
     ->middleware('auth')
     ->name('logout');
 
@@ -49,4 +52,5 @@ Route::get('/mypage_client', [App\Http\Controllers\Mypage\ClientController::clas
 // デザイナーページへアクセス
 Route::get('/mypage_designer', [App\Http\Controllers\Mypage\DesignerController::class, 'index']);
 
-
+// ポストページ
+Route::get('bbs', 'PostsController@index');

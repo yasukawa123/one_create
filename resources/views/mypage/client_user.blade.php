@@ -6,6 +6,7 @@
 <html lang="ja">
 <body>
     <p>クライアント編集ページ</p>
+    
 <!-- マイページ変更画面 -->
 <form action="/my_page2" method="post" enctype='multipart/form-data'> 
     {{ csrf_field() }}

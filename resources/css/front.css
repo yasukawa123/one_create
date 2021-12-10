@@ -1,0 +1,87 @@
+/* -----------------------
+  ホームページレイアウト
+------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", メイリオ, Meiryo, "ＭＳ Ｐゴシック", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #fff;
+  letter-spacing : 0.2em;
+}
+.container {
+  margin: 0 auto;
+  max-width:1080px;
+}
+
+/* -----------------------
+ヘッダーレイアウト 
+------------------------*/
+header {
+  padding: 30px  5px 10px;
+  /* position: fixed; */
+  top: 0;
+  width: 100%;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+}
+.left {
+  width:33.3%;
+  text-align: left;
+}
+.right {
+  width:33.3%;
+  text-align: right;
+}
+.center {
+   width:33.3%;
+}
+h1.logo {
+  margin: 0; 
+  padding: 0;
+  font-size: 20px;
+  text-align: center;
+}
+a {	
+  text-decoration: none;
+  color: lightslategray;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  /* display: flex; */
+}
+li {
+  /* margin: 0 0 0 15px; */
+  font-size: 14px;
+}
+
+/* 背景に画像を入れたい場合 */
+.main-visual h2 {
+  margin: 0;
+  font-size: 60px;
+  font-weight: normal;
+  color: lightslategrey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family:  sans-serif;
+}
+
+/* p.toptitle {
+	background: -webkit-linear-gradient(left, #ff26fb, #00b3ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 30px;
+} */
+
+/* -----------------------
+フッターレイアウト 
+------------------------*/
+footer {
+  background-color: gray;
+  height:180px;
+}
