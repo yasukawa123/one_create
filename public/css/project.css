@@ -1,0 +1,70 @@
+/* -----------------------
+CREATORレイアウト 
+------------------------*/
+.create_category {
+  margin: 2% 5px 2%;
+}
+.create_category a {	
+  text-decoration: none;
+  color: lightslategray;
+}
+.create_category ul {
+  list-style: none;
+  display: flex;
+}
+.create_category li {
+  font-size: 14px;
+  margin-right: 30px;
+}
+
+.search_container{
+  box-sizing: border-box;
+  position: relative;
+  border: 1px solid #999;
+  padding: 3px 10px;
+  border-radius: 20px;
+  height: 1.8em;
+  width: 180px;
+  overflow: hidden;
+}
+.search_container input[type="text"]{
+  border: none;
+  font-size: 14px;
+}
+.search_container input[type="text"]:focus {
+  outline: 0;
+}
+.search_container input[type="submit"]{
+  cursor: pointer;
+  font-family: FontAwesome;
+  font-size: 1.3em;
+  border: none;
+  background: none;
+  color: lightgray;
+  position: absolute;
+  width: 2em;
+  height: 2.5em;
+  right: 0;
+  top: -10px;
+  outline : none;
+}
+
+/* -----------------------
+カードレイアウト 
+------------------------*/
+.project_box {
+  margin: 30px 0 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.project-card {
+  width: 19%;
+  margin: 10px 5px;
+}
+.poject-inner {
+  width:100%;
+}
+.projectimage {
+  width:100%;
+}
