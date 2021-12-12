@@ -18,6 +18,11 @@
             <span>{{ $errors->first('email') }}</span></dd>
   </dl>
   <dl>
+    <dt>依頼者orデザイナー:</dt>
+    <dd><input type="text" name="role" size="30">
+            <span>{{ $errors->first('role') }}</span></dd>
+  </dl>
+  <dl>
     <dt>パスワード:</dt>
     <dd><input type="password" name="password" size="30">
             <span>{{ $errors->first('password') }}</span></dd>

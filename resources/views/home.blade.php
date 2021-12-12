@@ -56,8 +56,49 @@
               </li>
             </ul>
           </div>
+          {{-- <div class="card-header">Board</div> --}}
 
-          {{-- ①foreachで回す --}}
+{{-- @isset($search_result)
+    <h5 class="card-title">{{ $search_result }}</h5>
+@endisset
+
+<div class="card-body">
+    @if (session('status'))
+        <div class="alert alert-success" role="alert">
+            {{ session('status') }}
+        </div>
+    @endif --}}
+
+    {{-- @foreach($posts as $post)
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ $post->title }}</h5>
+            <h5 class="card-title">
+                カテゴリー:
+                 <a href="{{ route('posts.index', ['category_id' => $post->category_id]) }}">
+                    {{ $post->category->category_name }}
+                </a>
+            </h5>
+
+            <h5 class="card-title">
+                Tag:
+                @foreach($post->tags as $tag)
+                    <a href="{{ route('posts.index', ['tag_name' => $tag->tag_name]) }}">
+                        #{{ $tag->tag_name }}
+                    </a>
+                @endforeach
+            </h5>
+            <h5 class="card-title">
+                投稿者:
+                <a href="{{ route('users.show', $post->user_id) }}">{{ $post->user->name }}</a>
+            </h5>
+            <p class="card-text">{{ $post->content }}</p>
+            <a href="{{ route('posts.show', $post->id) }}" class="btn btn-primary">詳細</a>
+          </div>
+        </div>
+    @endforeach --}}
+
+          {{-- ①foreachで回す
           <div class="project_box">
             <!--カード① START-->
             <div class="project-card">
@@ -71,7 +112,46 @@
               <div class="here">👍 10</div>
             </div>
             <!--カード① END--> 
-          </div>
+          </div> --}}
+
+          
+
+          {{-- <div class="table-responsive">
+            <table class="table table-hover"> --}}
+                {{-- <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>カテゴリ</th>
+                    <th>作成日時</th>
+                    <th>名前</th>
+                    <th>件名</th>
+                    <th>メッセージ</th>
+                    <th>処理</th>
+                </tr>
+                </thead>
+                <tbody id="tbl"> --}}
+                {{-- @foreach ($posts as $post) --}}
+                    {{-- <tr>
+                        <td>{{ $post->id }}</td>
+                        <td>{{ $post->category->name }}</td>
+                        <td>{{ $post->created_at->format('Y.m.d') }}</td>
+                        <td>{{ $post->name }}</td>
+                        <td>{{ $post->subject }}</td>
+                        <td>{!! nl2br(e(Str::limit($post->message, 100))) !!}
+                        @if ($post->comments->count() >= 1)
+                            <p><span class="badge badge-primary">コメント：{{ $post->comments->count() }}件</span></p>
+                        @endif
+                        </td>
+                        <td class="text-nowrap">
+                            <p><a href="" class="btn btn-primary btn-sm">詳細</a></p>
+                            <p><a href="" class="btn btn-info btn-sm">編集</a></p>
+                            <p><a href="" class="btn btn-danger btn-sm">削除</a></p>
+                        </td>
+                    </tr> --}}
+                {{-- @endforeach --}}
+                {{-- </tbody>
+            </table>
+        </div> --}}
         </div>
       <!----- メインコンテンツ END ----->
         
@@ -98,6 +178,7 @@
       <div class="main-visual">
         <h2>ONE CREATE</h2>
       </div>
+      <!----- アニメーション START----->
       <div class="area" >
         <ul class="circles">
                 <li></li>
@@ -112,12 +193,13 @@
                 <li></li>
         </ul>
       </div >
+      <!----- アニメーション END----->
       <div class="container">
         <article>
-          <h1>タイトル</h1>
+          <h1>Hello</h1>
           <section>
-            <h2>要素</h2>
-            <p>コンテンツの内容</p>
+            <h2>クラウドソーシングサイトです</h2>
+            <p>デザイン専門のクラウドソーシングサイト</p>
           </section>
         </article>
       </div>
@@ -155,7 +237,7 @@
             </div>
           </footer>
           <div class="copyright">
-            <p>&copy; 2021 One Create.</p>
+            <p>&copy; 2021 ONE CREATE.</p>
           </div>
         </div>
       </div>

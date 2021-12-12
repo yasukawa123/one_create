@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB; //<=追加しないと使えない
 
-class CategoriesTableSeeder extends Seeder
+class UsersTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,10 +15,10 @@ class CategoriesTableSeeder extends Seeder
     public function run()
     {
         //シーだーで検証
-        DB::table('categories')->insert([
-            ['category_name' => '3dModel'], 
-            ['category_name' => 'Illustration'],  
-            ['category_name' => 'Graphic']
+        DB::table('users')->insert([
+            'name' => 'test22',
+            'email' => 'test22@example.com',
+            'password' => bcrypt('password')
         ]);
     }
 }

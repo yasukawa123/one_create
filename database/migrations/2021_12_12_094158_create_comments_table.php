@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePostsTable extends Migration
+class CreateCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,34 +13,32 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
+            // $table->increments('id');
+            // $table->timestamps();
+            // $table->string('is_deleted', 4)->default('0');
+            // $table->integer('post_id');
+            // $table->string('name');
+            // $table->text('comment');
             $table->bigIncrements('id');
-
-            // index()いらない？20211130
+    
+             // index()いらない？20211130
             // $table->bigInteger('user_id')->usingned()->index();
             // $table->bigInteger('category_id')->unsigned()->index();
-           
-            $table->string('title')->nullable();
-            $table->text('content')->nullable();
-            $table->integer('price')->nullable();
-            
-            // これここ？
-            // $table->integer('raiseHand')->nullable();
+               
+            $table->string('comment')->nullable();
 
             $table->foreignId('user_id')
                     ->constrained()
                     ->onDelete('cascade');
-            $table->foreignId('category_id')
+            $table->foreignId('post_id')
                     ->constrained()
                     ->onDelete('cascade');
-            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            // $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
 
             $table->timestamps();
         });
     }
 
-    
     /**
      * Reverse the migrations.
      *
@@ -48,6 +46,6 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('comments');
     }
 }

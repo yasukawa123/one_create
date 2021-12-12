@@ -14,8 +14,8 @@ class AddColumnRoleUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
-        });
+            $table->tinyInteger('role')->default(0)->after('password')->index('index_role')->comment('ロール');
+          });
     }
 
     /**
@@ -26,7 +26,7 @@ class AddColumnRoleUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
-        });
+            $table->dropColumn('role');
+          });
     }
 }
