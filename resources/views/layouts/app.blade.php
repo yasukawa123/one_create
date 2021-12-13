@@ -1,97 +1,83 @@
-<!DOCTYPE html>
-<html lang="ja">
-
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-  @yield('head')
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-
 <body>
-  
-  @if (Auth::check())
-        <!----- LoginHeader START ----->
-        @yield('loginheader')
-        <!----- LoginHeader END -----> 
-        
-        <!----- メインコンテンツ START ----->
-        <div class="container">
-          <div class="create_category">
-            <ul>
-              <li><a href="#">Product</a></li>
-              <li><a href="#">Illustrator</a></li>
-              <li><a href="#">Graphic</a></li>
-              <li><form method="get" action="#" class="search_container">
-                <input type="text" size="20" placeholder="ID検索">
-                <input type="submit" value="&#xf002">
-                </form>
-              </li>
-              <li><form method="get" action="#" class="search_container">
-                <input type="text" size="20" placeholder="金額検索">
-                <input type="submit" value="&#xf002">
-                </form>
-              </li>
-              <li><form method="get" action="#" class="search_container">
-                <input type="text" size="20" placeholder="キーワード検索">
-                <input type="submit" value="&#xf002">
-                </form>
-              </li>
-            </ul>
-          </div>
-          {{-- ①foreachで回す --}}
-          <div class="project_box">
-            <!--カード① START-->
-            <div class="project-card">
-              <div class="project-inner">
-                <img class="projectimage" src="images/table.png" alt="table">
-              </div>
-                <h3 class="project-title">テーブル作成</h3>
-                <div class="price">\2000</div>
-                <p>テーブルの作成依頼お願いいたします。</p>
-                <div class="user-id">wataru00</div>
-              <div class="here">👍 10</div>
+    <div id="app">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+            <div class="container">
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    {{ config('app.name', 'Laravel') }}
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Left Side Of Navbar -->
+                    <ul class="navbar-nav me-auto">
+
+                    </ul>
+
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ms-auto">
+                        <!-- Authentication Links -->
+                        @guest
+                            @if (Route::has('login'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                </li>
+                            @endif
+
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                    </ul>
+                </div>
             </div>
-            <!--カード① END--> 
-          </div>
-        </div>
-      <!----- メインコンテンツ END ----->
-        
+        </nav>
 
-  @else
-      <!----- LogoutHeader START ----->
-      @yield('logoutheader')
-      <!----- LogoutHeader END ----->
-        
-      <!----- メインコンテンツ ----->
-      <div class="main-visual">
-        <h2>ONE CREATE</h2>
-      </div>
-      <div class="area" >
-        <ul class="circles">
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-        </ul>
-      </div >
-      <div class="container">
-        <article>
-          <section>
-            <h2>クラウドソーシングサイト</h2>
-            <p>こちらのさいとはクラウドソーシングさいとです。テストテキスト</p>
-          </section>
-        </article>
-      </div>
-      <!----- メインコンテンツ END ----->
-  @endif
-
-
-      <!----- フッター ----->
-      @yield('footer')
-      <!----- フッター END ----->
+        <main class="py-4">
+            @yield('content')
+        </main>
+    </div>
 </body>
 </html>
