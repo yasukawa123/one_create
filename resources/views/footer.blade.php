@@ -1,3 +1,5 @@
+@extends('layouts.app')
+
 @section('footer') 
 <!----- フッター ----->
       <div class="container-footer-line">

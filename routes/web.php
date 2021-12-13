@@ -26,6 +26,7 @@ Route::get('/', function () {
     return view('home');
 });
 
+
 // 新規登録
 Route::get('/register', [App\Http\Controllers\Admin\RegisterController::class, 'create'])
     ->middleware('guest')
