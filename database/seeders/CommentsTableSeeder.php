@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Post;
+use App\Models\Comment;
 
-class PostsTableSeeder extends Seeder
+class CommentsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,11 +15,10 @@ class PostsTableSeeder extends Seeder
     public function run()
     {
         for ($i = 1; $i <= 10; $i++) {
-            Post::create([
-                'user_id'    => $i,
-                'title'  => 'テストタイトル' .$i,
-                'price'  => 100 * $i,
-                'text'       => 'これはテスト投稿' .$i,
+            Comment::create([
+                'user_id' => 1,
+                'post_id' => $i,
+                'text' => 'これはテストコメント' .$i,
                 'created_at' => now(),
                 'updated_at' => now()
             ]);

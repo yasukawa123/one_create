@@ -1,9 +1,9 @@
 <?php
 
 namespace Database\Seeders;
+use App\Models\User;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB; //<=追加しないと使えない
 
 class UsersTableSeeder extends Seeder
 {
@@ -14,11 +14,17 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        //シーだーで検証
-        DB::table('users')->insert([
-            'name' => 'test22',
-            'email' => 'test22@example.com',
-            'password' => bcrypt('password')
-        ]);
+        for ($i = 1; $i <= 10; $i++) {
+            User::create([
+                'screen_name'    => 'test_user' .$i,
+                'name'           => 'TEST' .$i,
+                'profile_image'  => 'https://placehold.jp/50x50.png',
+                'email'          => 'test' .$i .'@test.com',
+                'password'       => 'password',
+                'remember_token' => 'passwrD',
+                'created_at'     => now(),
+                'updated_at'     => now()
+            ]);
+        }
     }
 }
