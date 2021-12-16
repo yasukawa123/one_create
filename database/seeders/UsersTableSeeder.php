@@ -20,8 +20,8 @@ class UsersTableSeeder extends Seeder
                 'name'           => 'TEST' .$i,
                 'profile_image'  => 'https://placehold.jp/50x50.png',
                 'email'          => 'test' .$i .'@test.com',
-                'password'       => 'password',
-                'remember_token' => 'passwrD',
+                'password'       => 'password' .$i,
+                'remember_token' => 'passwrD' .$i,
                 'created_at'     => now(),
                 'updated_at'     => now()
             ]);
