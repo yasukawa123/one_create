@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use App\Models\User;
-use App\Models\Tweet;
+use App\Models\Post;
 use App\Models\Follower;
 
 
@@ -79,9 +79,30 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+     // プロフィール
+    // プロフィールが自身だった時に編集ボタンを追加
+    // プロフィールが自身以外のユーザだった時にフォロー/フォロー解除/フォローされているかの判定を追加
+    // 総ツイート数/フォロー数/フォロワー数の表示
+    // ユーザがツイートしたタイムラインの表示
+    public function show(User $user, Post $post, Follower $follower)
     {
-        //
+        $login_user = auth()->user();
+        $is_following = $login_user->isFollowing($user->id);
+        $is_followed = $login_user->isFollowed($user->id);
+        $timelines = $post->getUserTimeLine($user->id);
+        $post_count = $post->getPostCount($user->id);
+        $follow_count = $follower->getFollowCount($user->id);
+        $follower_count = $follower->getFollowerCount($user->id);
+
+        return view('users.show', [
+            'user'           => $user,
+            'is_following'   => $is_following,
+            'is_followed'    => $is_followed,
+            'timelines'      => $timelines,
+            'post_count'    => $post_count,
+            'follow_count'   => $follow_count,
+            'follower_count' => $follower_count
+        ]);
     }
 
     /**
