@@ -13,25 +13,44 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// Route::get('/home', function () {
+//     return view('home');
+// });
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
+// 新規登録
+Route::get('/register', [App\Http\Controllers\Admin\RegisterController::class, 'create'])
+    ->middleware('guest')
+    ->name('register');
+Route::post('/register', [App\Http\Controllers\Admin\RegisterController::class, 'store'])
+->middleware('guest');
 
-Auth::routes();
+// ログイン
+Route::get('/login', [App\Http\Controllers\Admin\LoginController::class, 'index'])
+    ->middleware('guest')
+    ->name('login');
+Route::post('/login', [App\Http\Controllers\Admin\LoginController::class, 'authenticate'])
+->middleware('guest');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//ログアウト
+Route::get('/logout', [App\Http\Controllers\Admin\LoginController::class, 'logout'])
+    ->middleware('auth')
+    ->name('logout');
 
-// ログイン状態
-Route::group(['middleware' => 'auth'], function() {
-    // ユーザ関連
-    Route::resource('users', 'UsersController', ['only' => ['index', 'show', 'edit', 'update']]);
 
-    // フォロー/フォロー解除を追加
-    Route::post('users/{user}/follow', 'UsersController@follow')->name('follow');
-    Route::delete('users/{user}/unfollow', 'UsersController@unfollow')->name('unfollow');
-});
+// クライアントページへアクセス
+Route::get('/mypage_client', [App\Http\Controllers\Mypage\ClientController::class, 'index']);
+// Route::post('/my_page', 'My_pageController@my_page_update');
 
-Route::resource('users', 'UsersController');
+// デザイナーページへアクセス
+Route::get('/mypage_designer', [App\Http\Controllers\Mypage\DesignerController::class, 'index']);
 
-Route::resource('users', 'UsersController', ['only' => ['index', 'show', 'edit', 'update']]);
+// // ポストページ
+// Route::get('bbs', 'PostsController@index');

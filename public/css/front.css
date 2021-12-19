@@ -23,22 +23,6 @@ body {
   margin: 0 auto;
   max-width:1080px;
 }
-.container-center {
-  text-align: center;
-  margin: 100px;
-  /* background-color: antiquewhite; */
-}
-.container-card {
-  width: 400px;
-  margin: 50px auto;
-  padding: 60px 30px;
-  box-shadow:0 0 10px #dddddd;
-}
-.container-card h1 {
-  background: -webkit-linear-gradient(left, #ff26fb, #00b3ff); 
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
 
 /* span {
   box-shadow: lightsalmon;

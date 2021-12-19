@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades;
+use App\Post;
 
-class UsersController extends Controller
+
+class PostsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $posts = Post::orderBy('created_at', 'desc')->get();
+        return view('bbs.index', ['posts' => $posts]);
     }
+}
 
     /**
      * Show the form for creating a new resource.

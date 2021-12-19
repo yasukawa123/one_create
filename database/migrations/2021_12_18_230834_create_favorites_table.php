@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Database\Schema\ForeignKeyDefinition;
 use Illuminate\Support\Facades\Schema;
 
 class CreateFavoritesTable extends Migration
@@ -15,28 +14,28 @@ class CreateFavoritesTable extends Migration
     public function up()
     {
         Schema::create('favorites', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            // $table->unsignedInteger('user_id')->comment('ユーザID');
-            // $table->unsignedInteger('post_id')->comment('ポストID');
+            $table->increments('id');
+            $table->unsignedBigInteger('user_id')->comment('ユーザID');
+            $table->unsignedInteger('tweet_id')->comment('ツイートID');
 
             $table->index('id');
             $table->index('user_id');
-            $table->index('post_id');
+            $table->index('tweet_id');
 
             $table->unique([
                 'user_id',
-                'post_id'
+                'tweet_id'
             ]);
 
-            $table->foreignId('user_id')
+            $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
-            $table->foreignId('post_id')
+            $table->foreign('tweet_id')
                 ->references('id')
-                ->on('posts')
+                ->on('tweets')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
