@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Follower;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,14 +14,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-// Route::get('/home', function () {
-//     return view('home');
-// });
 
 Route::get('/', function () {
     return view('home');
@@ -52,5 +46,17 @@ Route::get('/mypage_client', [App\Http\Controllers\Mypage\ClientController::clas
 // デザイナーページへアクセス
 Route::get('/mypage_designer', [App\Http\Controllers\Mypage\DesignerController::class, 'index']);
 
-// // ポストページ
-// Route::get('bbs', 'PostsController@index');
+// ログイン状態
+Route::group(['middleware' => 'auth'], function() {
+
+    // ユーザ関連
+    Route::resource('users', 'App\Http\Controllers\UsersController', ['only' => ['index', 'show', 'edit', 'update']]);
+
+    // フォロー/フォロー解除を追加
+    Route::post('users/{user}/follow', [App\Http\Controllers\UsersController::class, 'follow'])
+        ->name('follow');
+
+    Route::delete('users/{user}/unfollow', 'App\Http\Controllers\UsersController@unfollow', 'unfollow')
+        ->name('unfollow');
+
+});
