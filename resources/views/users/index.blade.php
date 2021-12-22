@@ -14,6 +14,7 @@
         <!----- Header START ----->
         <div class="container-header-line">
           <div class="container">
+            
             <header>
               <div class="left">
                 <h1 class="logo">
@@ -45,7 +46,7 @@
                                 {{-- <a href="{{ url('users/' .$user->id) }}" class="text-secondary">{{ $user->screen_name }}</a> --}}
                             </div>
 
-                            {{-- ①下記フォローはうまくいかないので一旦保留 --}}
+                            {{-- ①改善必須 --}}
                             @if (auth()->user()->isFollowed($user->id))
                                 <div class="px-2">
                                     <span class="px-1 bg-secondary text-light">フォローされています</span>
