@@ -55,8 +55,12 @@ Route::group(['middleware' => 'auth'], function() {
     // フォロー/フォロー解除を追加
     Route::post('users/{user}/follow', [App\Http\Controllers\UsersController::class, 'follow'])
         ->name('follow');
-
-    Route::delete('users/{user}/unfollow', 'App\Http\Controllers\UsersController@unfollow', 'unfollow')
+    Route::delete('users/{user}/unfollow', [App\Http\Controllers\UsersController::class,'unfollow'])
         ->name('unfollow');
+     // 異常あったら下にしてみる
+    // Route::delete('users/{user}/unfollow', 'App\Http\Controllers\UsersController@unfollow', 'unfollow')
+    //     ->name('unfollow');
 
+    // ツイート機能
+    Route::resource('tweets', 'App\Http\Controllers\TweetsController', ['only' => ['index', 'create', 'store', 'show', 'edit', 'update', 'destroy']]);
 });

@@ -45,11 +45,11 @@
                             </div>
                             <div class="p-2 d-flex flex-column align-items-center">
                                 <p class="font-weight-bold">フォロー数</p>
-                                {{-- <span>{{ $follow_count }}</span> --}}
+                                <span>{{ $follow_count }}</span>
                             </div>
                             <div class="p-2 d-flex flex-column align-items-center">
                                 <p class="font-weight-bold">フォロワー数</p>
-                                {{-- <span>{{ $follower_count }}</span> --}}
+                                <span>{{ $follower_count }}</span>
                             </div>
                         </div>
                     </div>
