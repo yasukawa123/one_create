@@ -1,5 +1,11 @@
+@extends('layouts.base')
 
-<div class="container">
+{{-- stylesheet_design --}}
+@section('design_layout')
+  <link rel="stylesheet" href="{{ asset('css/project.css') }}">
+@endsection
+
+@section('content')
     <div class="row justify-content-center">
         <div class="col-md-8 mb-3">
             <div class="card">
@@ -108,3 +114,4 @@
         {{ $timelines->links() }}
     </div>
 </div>
+@endsection

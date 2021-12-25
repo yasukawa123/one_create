@@ -1,4 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.base')
+
+{{-- stylesheet_design --}}
+@section('design_layout')
+  <link rel="stylesheet" href="{{ asset('css/project.css') }}">
+@endsection
 
 @section('content')
 <div class="container">

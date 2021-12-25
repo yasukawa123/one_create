@@ -63,4 +63,6 @@ Route::group(['middleware' => 'auth'], function() {
 
     // ツイート機能
     Route::resource('tweets', 'App\Http\Controllers\TweetsController', ['only' => ['index', 'create', 'store', 'show', 'edit', 'update', 'destroy']]);
+    // コメント関連
+    Route::resource('comments', 'CommentsController', ['only' => ['store']]);
 });
