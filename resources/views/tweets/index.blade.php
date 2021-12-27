@@ -86,11 +86,11 @@
                               </div>
                           @endif
                           <div class="mr-3 d-flex align-items-center">
-                              <a href="{{ url('tweets/' .$timeline->id) }}"><i class="far fa-comment fa-fw"></i></a>
+                              <a href="{{ url('tweets/' .$timeline->id) }}">コメント<i class="far fa-comment fa-fw"></i></a>
                               <p class="mb-0 text-secondary">{{ count($timeline->comments) }}</p>
                           </div>
                           <div class="d-flex align-items-center">
-                              <button type="" class="btn p-0 border-0 text-primary"><i class="far fa-heart fa-fw"></i></button>
+                              <button type="" class="btn p-0 border-0 text-primary">お気に入り<i class="far fa-heart fa-fw"></i></button>
                               <p class="mb-0 text-secondary">{{ count($timeline->favorites) }}</p>
                           </div>
                       </div>

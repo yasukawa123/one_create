@@ -23,9 +23,8 @@
           <div class="right">
             <ul class="header-dropmenu">
               <li>
-                <div><img src="{{ asset('storage/profile_image/' .auth()->user()->profile_image) }}" class="rounded-circle" alt='' style="width:50px;height:50px;vertical-align:middle;"><span style="vertical-align:middle;display:inline-block;"><a href="{{ url('users/' .auth()->user()->id) }}">{{ \Auth::user()->name }}</a></span></div>
-                {{-- ③<img src="{{ asset('storage/profile_image/' .auth()->user()->profile_image) }}" class="rounded-circle" width="50" height="50"> --}}
-                {{-- ③<a href="{{ url('users/' .auth()->user()->id) }}">{{ \Auth::user()->name }}さん</a> --}}
+                {{-- <div><img src="{{ asset('storage/profile_image/' .$user->profile_image) }}" class="rounded-circle" alt='' style="width:50px;height:50px;vertical-align:middle;"> --}}
+                  <span style="vertical-align:middle;display:inline-block;"><a href="{{ url('users/' .auth()->user()->id) }}">{{ \Auth::user()->name }}</a></span></div>
                 <ul>
                   <!-- 追加 -->
                   <li><a href="{{ url('tweets/create') }}" class="btn btn-md btn-primary">ツイートする</a></li>
@@ -63,7 +62,7 @@
       </div>
     </div>
     <!----- Top Header END ----->
-    @yield('top_page')
+    @yield('home')
     @yield('login')
     @yield('register')
   @endif
