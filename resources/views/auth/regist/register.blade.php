@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset='utf-8'>
-  <title>ユーザー登録フォーム</title>
-</head>
-<body>
+@extends('layouts.base')
+
+{{-- stylesheet_design --}}
+@section('design_layout')
+  <link rel="stylesheet" href="{{ asset('css/guest/register.css') }}">
+@endsection
+
+@section('register')
+<div class="container">
 <form name="registform" acion="/register" method="post" id="registform">
   {{ csrf_field() }}
   <dl>
@@ -29,5 +31,5 @@
   </dl>
   <button type='submit' name='action' value='send'>送信</button>
 </form>
-</body>
-</html>
+  </div>
+@endsection

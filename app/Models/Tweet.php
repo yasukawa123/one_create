@@ -53,7 +53,7 @@ class Tweet extends Model
     {
         // 自身とフォローしているユーザIDを結合する
         $follow_ids[] = $user_id;
-        return $this->whereIn('user_id', $follow_ids)->orderBy('created_at', 'DESC')->paginate(50);
+        return $this->whereIn('user_id', $follow_ids)->orderBy('created_at', 'DESC')->paginate(20);
     }
     
     // 詳細画面②
@@ -66,7 +66,9 @@ class Tweet extends Model
     public function tweetStore(Int $user_id, Array $data)
     {
         $this->user_id = $user_id;
+        $this->title = $data['title']; //追加③
         $this->text = $data['text'];
+        $this->price = $data['price']; //追加③
         $this->save();
 
         return;
@@ -82,7 +84,9 @@ class Tweet extends Model
     public function tweetUpdate(Int $tweet_id, Array $data)
     {
         $this->id = $tweet_id;
+        $this->title = $data['title']; //追加③
         $this->text = $data['text'];
+        $this->price = $data['price']; //追加③
         $this->update();
 
         return;

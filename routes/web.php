@@ -16,7 +16,7 @@ use App\Http\Controllers\UsersController;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('firstpage');
 });
 
 // 新規登録

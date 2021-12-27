@@ -55,7 +55,10 @@ class TweetsController extends Controller
         $user = auth()->user();
         $data = $request->all();
         $validator = Validator::make($data, [
-            'text' => ['required', 'string', 'max:140']
+            
+            'title' => ['required', 'string'],
+            'text' => ['required', 'string', 'max:140'],
+            'price' => ['required', 'integer']
         ]);
 
         $validator->validate();
@@ -115,7 +118,9 @@ class TweetsController extends Controller
     {
         $data = $request->all();
         $validator = Validator::make($data, [
+            // 'title' => ['required', 'string'],
             'text' => ['required', 'string', 'max:140']
+            // 'price' => ['required', 'integer']
         ]);
 
         $validator->validate();
