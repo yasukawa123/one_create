@@ -66,9 +66,9 @@ class Tweet extends Model
     public function tweetStore(Int $user_id, Array $data)
     {
         $this->user_id = $user_id;
-        $this->title = $data['title']; //追加③
+        // $this->title = $data['title']; //追加③
         $this->text = $data['text'];
-        $this->price = $data['price']; //追加③
+        // $this->price = $data['price']; //追加③
         $this->save();
 
         return;
@@ -84,9 +84,9 @@ class Tweet extends Model
     public function tweetUpdate(Int $tweet_id, Array $data)
     {
         $this->id = $tweet_id;
-        $this->title = $data['title']; //追加③
+        // $this->title = $data['title']; //追加③
         $this->text = $data['text'];
-        $this->price = $data['price']; //追加③
+        // $this->price = $data['price']; //追加③
         $this->update();
 
         return;

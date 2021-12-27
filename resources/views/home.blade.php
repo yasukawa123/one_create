@@ -7,7 +7,6 @@
 
 {{-- @section('content') --}}
 {{-- <a href="/tweets" >掲示板へ</a> --}}
-{{-- <div><img src="{{ asset('storage/profile_image/' .$user->profile_image) }}" class="rounded-circle" alt='' style="width:50px;height:50px;vertical-align:middle;"> --}}
 
 {{-- @endsection --}}
 

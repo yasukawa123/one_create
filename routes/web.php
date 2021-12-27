@@ -18,9 +18,6 @@ use App\Http\Controllers\UsersController;
 Route::get('/', function () {
     return view('home');
 });
-Route::get('home', function () {
-    return view('layouts/base');
-});
 
 // 新規登録
 Route::get('/register', [App\Http\Controllers\Admin\RegisterController::class, 'create'])
@@ -67,5 +64,5 @@ Route::group(['middleware' => 'auth'], function() {
     // ツイート機能
     Route::resource('tweets', 'App\Http\Controllers\TweetsController', ['only' => ['index', 'create', 'store', 'show', 'edit', 'update', 'destroy']]);
     // コメント関連
-    Route::resource('comments', 'CommentsController', ['only' => ['store']]);
+    Route::resource('comments', 'App\Http\Controllers\CommentsController', ['only' => ['store']]);
 });

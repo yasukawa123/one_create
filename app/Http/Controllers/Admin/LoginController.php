@@ -24,7 +24,9 @@ class LoginController extends Controller
             $request->session()->regenerate();
 
             // return redirect()->intended(RouteServiceProvider::HOME);
-            return redirect()->intended(RouteServiceProvider::HOME);
+            return redirect()->intended('/tweets');
+            
+            // return redirect('/tweets');
         }
 
         return back()->withErrors([

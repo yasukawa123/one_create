@@ -23,12 +23,12 @@
           <div class="right">
             <ul class="header-dropmenu">
               <li>
-                {{-- <div><img src="{{ asset('storage/profile_image/' .$user->profile_image) }}" class="rounded-circle" alt='' style="width:50px;height:50px;vertical-align:middle;"> --}}
+                <div><img src="{{ asset('storage/profile_image/') }}" class="rounded-circle" alt='' style="width:50px;height:50px;vertical-align:middle;">
                   <span style="vertical-align:middle;display:inline-block;"><a href="{{ url('users/' .auth()->user()->id) }}">{{ \Auth::user()->name }}</a></span></div>
                 <ul>
                   <!-- 追加 -->
                   <li><a href="{{ url('tweets/create') }}" class="btn btn-md btn-primary">ツイートする</a></li>
-                  <li><a href="#">MYPROJECT</a></li>
+                  <li><a href="{{ url('users/' .auth()->user()->id) }}">マイページ</a></li>
                   <li><p><a href="/logout">ログアウト</a></li>
                 </ul>
               </li>
