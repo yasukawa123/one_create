@@ -17,7 +17,7 @@ class CreateTweetsTable extends Migration
             $table->increments('id');
             $table->unsignedBigInteger('user_id')->comment('ユーザID');
             $table->string('tweets_image')->nullable()->comment('ツイート画像');
-            $table->string('title')->comment('タイトル');
+            $table->string('title')->nullable()->comment('タイトル');
             $table->string('text')->comment('本文');
             $table->integer('price')->nullable()->comment('依頼金額');
             $table->softDeletes();

@@ -1,3 +1,7 @@
+{{---------------- 
+    1つの投稿 
+-----------------}}
+
 @extends('layouts.base')
 
 {{-- stylesheet_design --}}
