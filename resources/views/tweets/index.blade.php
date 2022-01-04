@@ -11,7 +11,8 @@
 @endsection
 
 @section('content')
-<div class="create_category">
+{{-- 時間ができたらやっていく⑤ --}}
+{{-- <div class="create_category">
   <ul>
     <li><a href="#">Product</a></li>
     <li><a href="#">Illustrator</a></li>
@@ -32,7 +33,7 @@
       </form>
     </li>
   </ul>
-</div>
+</div> --}}
 
 <div class="col-md-8 mb-3 text-right">
   <a href="{{ url('users') }}">ユーザ一覧 <i class="fas fa-users" class="fa-fw"></i> </a>
@@ -63,14 +64,15 @@
         {{-- <img src="{{ asset('storage/twees_image/' .$timeline->user->profile_image) }}" class="rounded-circle" width="50" height="50"> --}}
         <img class="projectimage" src="{{ asset('storage/tweets_image/noimage.png') }}" width="100%" height="auto">
       </div>
+      {{-- <a href="{{ url('users/' .$timeline->user->id) }}" class="text-secondary">投稿者にいかない！</a> --}}
+      <p class="mb-0 text-secondary">{{ $timeline->created_at->format('Y-m-d H:i') }}</p>
       <p class="mb-0">{{ $timeline->user->name }}</p>
-      <a href="{{ url('users/' .$timeline->user->id) }}" class="text-secondary">{{ $timeline->user->screen_name }}</a>
-      <p class="mb-0 text-secondary">{{ $timeline->created_at->format('Y-m-d H:i') }}</p>     
-        {!! nl2br(e($timeline->text)) !!}
+      <p class="mb-0">{{ $timeline->title }}</p>
+        <p class="mb-0">{!! nl2br(e($timeline->text)) !!}</p>
         <p>\{!! nl2br(e($timeline->price)) !!}yen</p> 
         @if ($timeline->user->id === Auth::user()->id)
           <div class="dropdown mr-3 d-flex align-items-center">
-              <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{-- <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> --}}
                   <i class="fas fa-ellipsis-v fa-fw"></i>
               </a>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -83,14 +85,11 @@
               </div>
           </div>
         @endif
-        <div class="mr-3 d-flex align-items-center">
             <a href="{{ url('tweets/' .$timeline->id) }}">💬<i class="far fa-comment fa-fw"></i></a>
-            <p class="mb-0 text-secondary">{{ count($timeline->comments) }}</p>
-        </div>
-        <div class="d-flex align-items-center">
+            <p class="">{{ count($timeline->comments) }}</p>
+
             <button type="" class="btn p-0 border-0 text-primary">👍<i class="far fa-heart fa-fw"></i></button>
-            <p class="mb-0 text-secondary">{{ count($timeline->favorites) }}</p>
-        </div>
+            <p class="">{{ count($timeline->favorites) }}</p>
     </div>        
   @endforeach
 @endif

@@ -79,12 +79,16 @@
                                         {{-- <a href="{{ url('users/' .$user->id) }}" class="text-secondary">{{ $user->screen_name }}</a> --}}
                                     </div>
                                 </div>
+                                {{-- <p>画像投稿</p>⑤ --}}
+
                                 <p>タイトル</p>
-                                <input id="title" name="title" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }} "value="{{ old('title') }} "type="text">
+                                {{-- <input id="title" name="title" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" value={{ old('title') }} type="title"> --}}
+                                <textarea class="form-control @error('title') is-invalid @enderror" name="title" required autocomplete="text" rows="4">{{ old('title') }}</textarea>
+                                
+
                                 <div class="col-md-12">
                                     <p>依頼内容</p>
                                     <textarea class="form-control @error('text') is-invalid @enderror" name="text" required autocomplete="text" rows="4">{{ old('text') }}</textarea>
-    
                                     @error('text')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

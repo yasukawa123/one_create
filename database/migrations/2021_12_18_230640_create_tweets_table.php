@@ -26,6 +26,9 @@ class CreateTweetsTable extends Migration
             $table->index('id');
             $table->index('user_id');
             $table->index('text');
+            $table->index('title');
+            $table->index('price');
+            $table->index('tweets_image');
 
             $table->foreign('user_id')
                 ->references('id')

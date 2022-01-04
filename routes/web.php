@@ -46,6 +46,8 @@ Route::get('/mypage_client', [App\Http\Controllers\Mypage\ClientController::clas
 // デザイナーページへアクセス
 Route::get('/mypage_designer', [App\Http\Controllers\Mypage\DesignerController::class, 'index']);
 
+Route::get('/designerpage', [App\Http\Controllers\Mypage\DesignerController::class, 'index']);
+
 // ログイン状態
 Route::group(['middleware' => 'auth'], function() {
 
