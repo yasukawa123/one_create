@@ -55,8 +55,8 @@ class TweetsController extends Controller
         $user = auth()->user();
         $data = $request->all();
         $validator = Validator::make($data, [  
-            'title' => ['required', 'string'], //追加③
-            // 'price' => ['required', 'integer'], //追加③
+            'title' => ['required', 'string'],  //追加③
+            'price' => ['required', 'integer'], //追加③
             // 'tweets_image' => ['file', 'image', 'mimes:jpeg,png,jpg', 'max:2048'],
             // 'tweets_image' => ['file', 'image', 'mimes:jpeg,png,jpg'],
             'text' => ['required', 'string', 'max:140']
@@ -120,7 +120,7 @@ class TweetsController extends Controller
         $data = $request->all();
         $validator = Validator::make($data, [
             'title' => ['required', 'string'], //追加③
-            // 'price' => ['required', 'integer'], //追加③
+            'price' => ['required', 'integer'], //追加③
             // 'tweets_image' => ['file', 'image', 'mimes:jpeg,png,jpg'],
             'text' => ['required', 'string', 'max:140']
         ]);

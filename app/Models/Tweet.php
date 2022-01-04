@@ -19,7 +19,7 @@ class Tweet extends Model
     protected $fillable = [
         // 'tweets_image',  //実装したい⑤
         'title',
-        // 'price',
+        'price',
         'text'
     ];
 
@@ -68,7 +68,7 @@ class Tweet extends Model
         $this->user_id = $user_id;
         $this->text = $data['text'];
         $this->title = $data['title'];
-        // $this->price = $data['price']; //追加③
+        $this->price = $data['price']; //追加③
         // $this->tweets_image = $data['tweets_image']; //追加③
         $this->save();
 
@@ -87,7 +87,7 @@ class Tweet extends Model
         $this->id = $tweet_id;
         $this->text = $data['text'];
         $this->title = $data['title']; //追加③
-        // $this->price = $data['price']; //追加③
+        $this->price = $data['price']; //追加③
         // $this->tweets_image = $data['tweets_image']; //実装したい⑤
         $this->update();
 

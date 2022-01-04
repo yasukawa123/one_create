@@ -82,9 +82,11 @@
                                 {{-- <p>画像投稿</p>⑤ --}}
 
                                 <p>タイトル</p>
-                                {{-- <input id="title" name="title" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" value={{ old('title') }} type="title"> --}}
-                                <textarea class="form-control @error('title') is-invalid @enderror" name="title" required autocomplete="text" rows="4">{{ old('title') }}</textarea>
+                                <input id="title" name="title" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" value="{{ old('title') }}" type="title">
+                                {{-- <textarea class="form-control @error('title') is-invalid @enderror" name="title" required autocomplete="text" rows="4">{{ old('title') }}</textarea> --}}
                                 
+                                <p>金額</p>
+                                <input id="price" name="price" class="form-control {{ $errors->has('price') ? 'is-invalid' : '' }}" value="{{ old('price') }}" type="price">
 
                                 <div class="col-md-12">
                                     <p>依頼内容</p>
