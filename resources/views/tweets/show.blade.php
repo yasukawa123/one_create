@@ -17,7 +17,6 @@
                   <img src="{{ asset('storage/profile_image/' .$tweet->user->profile_image) }}" class="rounded-circle" width="50" height="50">
                   <div class="ml-2 d-flex flex-column">
                       <p class="mb-0">{{ $tweet->user->name }}</p>
-                      <a href="{{ url('users/' .$tweet->user->id) }}" class="text-secondary">{{ $tweet->user->screen_name }}</a>
                   </div>
                   <div class="d-flex justify-content-end flex-grow-1">
                       <p class="mb-0 text-secondary">{{ $tweet->created_at->format('Y-m-d H:i') }}</p>

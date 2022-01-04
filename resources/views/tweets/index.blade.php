@@ -61,12 +61,15 @@
   @foreach ($timelines as $timeline)
     <div class="project-card">
       <div class="project-inner">
+        {{-- プロフィール画像実装するかは未定 --}}
+        <img class="projectimaage" src="{{ asset('storage/profile_image/' .$timeline->user->profile_image) }}" alt="" style="width:50px; height:auto; vertical-align:middle;">
         {{-- <img src="{{ asset('storage/twees_image/' .$timeline->user->profile_image) }}" class="rounded-circle" width="50" height="50"> --}}
-        <img class="projectimage" src="{{ asset('storage/tweets_image/noimage.png') }}" width="100%" height="auto">
+        {{-- <img class="projectimage" src="{{ asset('storage/tweets_image/noimage.png') }}" width="100%" height="auto"> --}}
       </div>
-      {{-- <a href="{{ url('users/' .$timeline->user->id) }}" class="text-secondary">投稿者にいかない！</a> --}}
       <p class="mb-0 text-secondary">{{ $timeline->created_at->format('Y-m-d H:i') }}</p>
-      <p class="mb-0">{{ $timeline->user->name }}</p>
+      <a href="{{ url('tweets/' .$timeline->id) }}">
+        <p class="mb-0">{{ $timeline->user->name }}</p>
+      </a>
       <p class="mb-0">{{ $timeline->title }}</p>
         <p class="mb-0">{!! nl2br(e($timeline->text)) !!}</p>
         <p>\{!! nl2br(e($timeline->price)) !!}yen</p> 

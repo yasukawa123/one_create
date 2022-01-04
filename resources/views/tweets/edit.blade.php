@@ -32,8 +32,11 @@
                             <p>タイトル</p>
                             <input id="title" name="title" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }} "value="{{ old('title') }} "type="text">
 
+                            <p>金額</p>
+                            <input id="price" name="price" class="form-control {{ $errors->has('price') ? 'is-invalid' : '' }}" value="{{ old('price') }}" type="price">
+
                             <div class="col-md-12">
-                                <textarea class="form-control @error('text') is-invalid @enderror" name="text" required autocomplete="text" rows="4">{{ old('text') ? : $tweets->text }}</textarea>
+                            <textarea class="form-control @error('text') is-invalid @enderror" name="text" required autocomplete="text" rows="4">{{ old('text') ? : $tweets->text }}</textarea>
 
                                 @error('text')
                                     <span class="invalid-feedback" role="alert">
