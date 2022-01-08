@@ -16,7 +16,9 @@
               <div class="card-haeder p-3 w-100 d-flex">
                   <img src="{{ asset('storage/profile_image/' .$tweet->user->profile_image) }}" class="rounded-circle" width="50" height="50">
                   <div class="ml-2 d-flex flex-column">
-                      <p class="mb-0">{{ $tweet->user->name }}</p>
+                      {{-- 本名はいらないよね？ --}}
+                      {{-- <p class="mb-0">{{ $tweet->user->name }}</p> --}}
+                      <p class="mb-0">{{ $tweet->user->screen_name }}</p>
                   </div>
                   <div class="d-flex justify-content-end flex-grow-1">
                       <p class="mb-0 text-secondary">{{ $tweet->created_at->format('Y-m-d H:i') }}</p>
@@ -46,10 +48,11 @@
                       <a href="{{ url('tweets/' .$tweet->id) }}"><i class="far fa-comment fa-fw"></i></a>
                       <p class="mb-0 text-secondary">{{ count($tweet->comments) }}</p>
                   </div>
-                  <div class="d-flex align-items-center">
+                  {{-- お気に入り：いらないと思う --}}
+                  {{-- <div class="d-flex align-items-center">
                       <button type="" class="btn p-0 border-0 text-primary"><i class="far fa-heart fa-fw"></i></button>
                       <p class="mb-0 text-secondary">{{ count($tweet->favorites) }}</p>
-                  </div>
+                  </div> --}}
               </div>
           </div>
       </div>
@@ -64,7 +67,7 @@
                         <div class="py-3 w-100 d-flex">
                             <img src="{{ asset('storage/profile_image/' .$comment->user->profile_image) }}" class="rounded-circle" width="50" height="50">
                             <div class="ml-2 d-flex flex-column">
-                                <p class="mb-0">{{ $comment->user->name }}</p>
+                                {{-- ScreenName --}}
                                 <a href="{{ url('users/' .$comment->user->id) }}" class="text-secondary">{{ $comment->user->screen_name }}</a>
                             </div>
                             <div class="d-flex justify-content-end flex-grow-1">

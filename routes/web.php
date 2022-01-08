@@ -68,3 +68,19 @@ Route::group(['middleware' => 'auth'], function() {
     // コメント関連
     Route::resource('comments', 'App\Http\Controllers\CommentsController', ['only' => ['store']]);
 });
+
+
+// 管理者以上
+Route::group(['middleware' => ['auth', 'can:admin-higher']], function () {
+//ここにルートを記述
+});
+
+// クライアント
+Route::group(['middleware' => ['auth', 'can:client-user']], function () {
+    //ここにルートを記述
+  });
+
+// デザイナー
+Route::group(['middleware' => ['auth', 'can:designer-user']], function () {
+    //ここにルートを記述
+  });

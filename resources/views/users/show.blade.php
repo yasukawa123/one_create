@@ -13,8 +13,9 @@
                     <div class="p-3 d-flex flex-column">
                         <img src="{{ asset('storage/profile_image/' .$user->profile_image) }}" class="rounded-circle" width="100" height="100">
                         <div class="mt-3 d-flex flex-column">
-                            <h4 class="mb-0 font-weight-bold">{{ $user->name }}</h4>
-                            {{-- <span class="text-secondary">{{ $user->screen_name }}</span> --}}
+                            {{-- 本名はいらない --}}
+                            {{-- <h4 class="mb-0 font-weight-bold">{{ $user->name }}</h4> --}}
+                            <span class="text-secondary">{{ $user->screen_name }}</span>
                         </div>
                     </div>
                     <div class="p-3 d-flex flex-column justify-content-between">
@@ -46,7 +47,7 @@
                         </div>
                         <div class="d-flex justify-content-end">
                             <div class="p-2 d-flex flex-column align-items-center">
-                                <p class="font-weight-bold">ツイート数</p>
+                                <p class="font-weight-bold">依頼数</p>
                                 <span>{{ $tweet_count }}</span>
                             </div>
                             <div class="p-2 d-flex flex-column align-items-center">
@@ -69,8 +70,8 @@
                         <div class="card-haeder p-3 w-100 d-flex">
                             <img src="{{ asset('storage/profile_image/' .$user->profile_image) }}"  class="rounded-circle" width="50" height="50">
                             <div class="ml-2 d-flex flex-column flex-grow-1">
-                                <p class="mb-0">{{ $timeline->user->name }}</p>
-                                <a href="{{ url('users/' .$timeline->user->id) }}" class="text-secondary">{{ $timeline->user->screen_name }}</a>
+                                {{-- <p class="mb-0">{{ $timeline->user->name }}</p> --}}
+                                {{-- <a href="{{ url('users/' .$timeline->user->id) }}" class="text-secondary">{{ $timeline->user->screen_name }}</a> --}}
                             </div>
                             <div class="d-flex justify-content-end flex-grow-1">
                                 <p class="mb-0 text-secondary">{{ $timeline->created_at->format('Y-m-d H:i') }}</p>

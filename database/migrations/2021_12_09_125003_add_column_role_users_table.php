@@ -13,10 +13,14 @@ class AddColumnRoleUsersTable extends Migration
      */
     public function up()
     {
+        // Schema::table('users', function (Blueprint $table) {
+        //     // roleでクリエイターとデザイナーで分ける
+        //     $table->string('role')->nullable()->after('password');
+        // });
+        //roleカラムをTINYINT型でpasswordカラムの後に追加。更にインデックスを付与。管理者・クライアント・デザイナーで分ける
         Schema::table('users', function (Blueprint $table) {
-            // roleでクリエイターとデザイナーで分ける
-            $table->string('role')->nullable()->after('password');
-        });
+            $table->tinyInteger('role')->default(0)->after('password')->index('index_role')->comment('ロール');
+          });
     }
 
     /**
@@ -27,7 +31,6 @@ class AddColumnRoleUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
             $table->dropColumn('role');
         });
     }

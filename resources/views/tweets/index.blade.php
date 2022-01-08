@@ -35,8 +35,8 @@
   </ul>
 </div> --}}
 
-<div class="col-md-8 mb-3 text-right">
-  <a href="{{ url('users') }}">ユーザ一覧 <i class="fas fa-users" class="fa-fw"></i> </a>
+<div class="project-top">
+  <a href="{{ url('users') }}">＜ ユーザ一覧へ  ＞<i class="fas fa-users" class="fa-fw"></i> </a>
 </div>
   
   {{-- ①foreachで回す --}}
@@ -60,46 +60,80 @@
 @if (isset($timelines))
   @foreach ($timelines as $timeline)
     <div class="project-card">
-      <div class="project-inner">
-        {{-- プロフィール画像実装するかは未定 --}}
-        <img class="projectimaage" src="{{ asset('storage/profile_image/' .$timeline->user->profile_image) }}" alt="" style="width:50px; height:auto; vertical-align:middle;">
-        {{-- <img src="{{ asset('storage/twees_image/' .$timeline->user->profile_image) }}" class="rounded-circle" width="50" height="50"> --}}
-        {{-- <img class="projectimage" src="{{ asset('storage/tweets_image/noimage.png') }}" width="100%" height="auto"> --}}
-      </div>
-      <p class="mb-0 text-secondary">{{ $timeline->created_at->format('Y-m-d H:i') }}</p>
       <a href="{{ url('tweets/' .$timeline->id) }}">
-        <p class="mb-0">{{ $timeline->user->name }}</p>
+        <div class="project-inner">
+          <img class="projectimage" src="{{ asset('storage/tweets_image/3dimage.jpg') }}" width="100%" height="auto">
+          {{-- <img class="projectimage" src="{{ asset('storage/tweets_image/' .$timeline->tweets_image) }}" alt="" style="width:50px” height:auto; vertical-align:middle;"> --}}
+          {{-- <img src="{{ asset('storage/twees_image/' .$timeline->user->profile_image) }}" class="rounded-circle" width="50" height="50"> --}}
+          {{-- <img src="{{ asset('storage/tweets_image/' .$timeline->tweets_image) }}" class="rounded-circle" width="50" height="50"> --}}
+        </div>
       </a>
-      <p class="mb-0">{{ $timeline->title }}</p>
-        <p class="mb-0">{!! nl2br(e($timeline->text)) !!}</p>
-        <p>\{!! nl2br(e($timeline->price)) !!}yen</p> 
-        @if ($timeline->user->id === Auth::user()->id)
-          <div class="dropdown mr-3 d-flex align-items-center">
-              {{-- <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> --}}
-                  <i class="fas fa-ellipsis-v fa-fw"></i>
-              </a>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <form method="POST" action="{{ url('tweets/' .$timeline->id) }}" class="mb-0">
-                      @csrf
-                      @method('DELETE')
-                      <a href="{{ url('tweets/' .$timeline->id .'/edit') }}" class="dropdown-item">編集</a>
-                      <button type="submit" class="dropdown-item del-btn">削除</button>
-                  </form>
-              </div>
-          </div>
-        @endif
-            <a href="{{ url('tweets/' .$timeline->id) }}">💬<i class="far fa-comment fa-fw"></i></a>
-            <p class="">{{ count($timeline->comments) }}</p>
 
-            <button type="" class="btn p-0 border-0 text-primary">👍<i class="far fa-heart fa-fw"></i></button>
-            <p class="">{{ count($timeline->favorites) }}</p>
-    </div>        
+      {{---------------
+        カテゴリー
+      ---------------}}
+      <p class='mb-6-tag'>3Dモデル</p>
+      <div class="text">
+        {{---------------
+          タイトル
+        ---------------}}
+        <p class="mb-2-return">{{ $timeline->title }}</p>
+
+        {{---------------
+          依頼内容
+        ---------------}}
+        <p class="mb-6-return">{!! nl2br(e($timeline->text)) !!}</p>
+      </div>
+      <div class="contributor">
+        <div class="left">
+          {{---------------
+            プロフィール画像
+          ---------------}}
+          @if (!isset( $timeline->user->profile_image ))
+            <img  class="profile_image" src="{{ asset('storage/profile_image/000.png') }}" alt="profile_image">
+          @else
+            <img  class="profile_image" src="{{ asset('storage/profile_image/' .$timeline->user->profile_image) }}" alt="profile_image">
+          @endif
+        </div>
+        <div class="right">
+          {{---------------
+            ユーザーネーム
+          ---------------}}
+          <p class="mb-6">{{ $timeline->user->screen_name }}</p>
+
+          {{---------------
+            公開日
+          ---------------}}
+          <p class="mb-6">{{ $timeline->created_at->format('y/m/d') }}</p>
+        </div>
+        <div class="comment">
+          {{---------------
+            コメント
+          ---------------}}
+          <a href="{{ url('tweets/' .$timeline->id) }}">
+            <p><img class="comment_image" src="{{ asset('storage/tweets_image/comment_image.png') }}"></p>
+            {{-- <p class="comment_count">{{ count($timeline->comments) }}</p> --}}
+          </a>
+        </div>
+        {{---------------
+          ★★お気に入り　未実装でもいいかも
+        ---------------}}
+        {{-- <button type="" class="btn p-0 border-0 text-primary">👍<i class="far fa-heart fa-fw"></i></button>
+        <p class="">{{ count($timeline->favorites) }}</p> --}}
+        {{---------------
+          報酬金額 
+        ---------------}}
+        <div class="price">
+          <p class="mb-6">{!! number_format(nl2br(e($timeline->price))) !!}円</p> 
+        </div>
+      </div>
+    </div>
   @endforeach
 @endif
 <!--カード① END--> 
 </div>
 
-<div class="my-4 d-flex justify-content-center">
-    {{ $timelines->links() }}
+<div class="mb-1-pagenate">
+    {{ $timelines->links('vendor.pagination.semantic-ui') }}
 </div>
 @endsection

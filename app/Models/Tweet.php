@@ -17,7 +17,7 @@ class Tweet extends Model
      * @var array
      */
     protected $fillable = [
-        // 'tweets_image',  //実装したい⑤
+        'tweets_image',  //実装したい⑤
         'title',
         'price',
         'text'
@@ -53,7 +53,7 @@ class Tweet extends Model
     {
         // 自身とフォローしているユーザIDを結合する
         $follow_ids[] = $user_id;
-        return $this->whereIn('user_id', $follow_ids)->orderBy('created_at', 'DESC')->paginate(20);
+        return $this->whereIn('user_id', $follow_ids)->orderBy('created_at', 'DESC')->paginate(18);
     }
     
     // 詳細画面②
@@ -69,8 +69,22 @@ class Tweet extends Model
         $this->text = $data['text'];
         $this->title = $data['title'];
         $this->price = $data['price'];
-        $this->tweets_image = $data['tweets_image']; //追加③
+        // $this->tweets_image = $data['tweets_image'];
         $this->save();
+
+        
+        // if (isset($data['tweets_image'])) {
+        //     $file_name = $data['tweets_image']->store('public/tweets_image/');
+        //     $this::where('id', $this->id)
+        //         ->update([
+        //             'tweets_image' => basename($file_name),
+        //         ]);
+        // } else {
+        //     $this::where('id', $this->id)
+        //         ->update([
+        //             // 'tweets_image' => null;
+        //         ]); 
+        // }
 
         return;
     }
@@ -88,7 +102,7 @@ class Tweet extends Model
         $this->text = $data['text'];
         $this->title = $data['title'];
         $this->price = $data['price'];
-        $this->tweets_image = $data['tweets_image']; //実装したい⑤
+        // $this->tweets_image = $data['tweets_image']; //実装したい⑤
         $this->update();
 
         return;
@@ -99,4 +113,5 @@ class Tweet extends Model
     {
         return $this->where('user_id', $user_id)->where('id', $tweet_id)->delete();
     }
+    
 }

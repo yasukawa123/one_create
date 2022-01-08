@@ -76,19 +76,22 @@
                                     <img src="{{ asset('storage/profile_image/' .$user->profile_image) }}" class="rounded-circle" width="50" height="50">
                                     <div class="ml-2 d-flex flex-column">
                                         <p class="mb-0">{{ $user->name }}</p>
-                                        {{-- <a href="{{ url('users/' .$user->id) }}" class="text-secondary">{{ $user->screen_name }}</a> --}}
+                                        <a href="{{ url('users/' .$user->id) }}" class="text-secondary">{{ $user->screen_name }}</a>
                                     </div>
                                 </div>
                                 {{-- <p>画像投稿</p>⑤ --}}
 
                                 {{-- タイトル記入欄 --}}
                                 <p>タイトル</p>
-                                <input id="title" name="title" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" value="{{ old('title') }}" type="title">
-                                {{-- <textarea class="form-control @error('title') is-invalid @enderror" name="title" required autocomplete="text" rows="4">{{ old('title') }}</textarea> --}}
-                                
+                                <input id="title" name="title" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" value="{{ old('title') }}" type="title">                                
                                 {{-- 金額記入欄 --}}
                                 <p>金額</p>
                                 <input id="price" name="price" class="form-control {{ $errors->has('price') ? 'is-invalid' : '' }}" value="{{ old('price') }}" type="price">
+                                {{-- <p>画像を添付</p> --}}
+                                {{-- <form action="/my_page2" method="post" enctype='multipart/form-data'> sda</form> --}}
+                                {{-- <img src="{{ asset('storage/profile_image/' .$user->profile_image) }}" class="mr-2 rounded-circle" width="80" height="80" alt="profile_image"> --}}
+                                {{-- <input id="twets_image" type="file" name="tweets_image" class="@error('tweets_image') is-invalid @enderror" autocomplete="tweets_image"> --}}
+                                {{-- <input id="tweets_image" type="file" name="tweets_image" class="form-control {{ $errors->has('tweets_image') ? 'is-invalid' : '' }}" value="{{ old('tweets_image') }}"> --}}
 
                                 {{-- 依頼内容記入欄 --}}
                                 <div class="col-md-12">
@@ -104,7 +107,7 @@
     
                             <div class="form-group row mb-0">
                                 <div class="col-md-12 text-right">
-                                    <p class="mb-4 text-danger">140文字以内</p>
+                                    <p class="mb-4 text-danger">500文字以内</p>
                                     <button type="submit" class="btn btn-primary">
                                         ツイートする
                                     </button>

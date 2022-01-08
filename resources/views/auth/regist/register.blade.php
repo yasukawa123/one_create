@@ -15,6 +15,11 @@
             <span>{{ $errors->first('name') }}</span></dd>
   </dl>
   <dl>
+    <dt>表示ネーム:</dt>
+    <dd><input type="text" name="screen_name" size="30">
+            <span>{{ $errors->first('screen_name') }}</span></dd>
+  </dl>
+  <dl>
     <dt>メールアドレス:</dt>
     <dd><input type="text" name="email" size="30">
             <span>{{ $errors->first('email') }}</span></dd>

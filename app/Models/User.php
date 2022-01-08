@@ -19,6 +19,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'screen_name',
         'profile_image',
         'email',
         'password'
@@ -93,6 +94,7 @@ class User extends Authenticatable
             $this::where('id', $this->id)
                 ->update([
                     'name'          => $params['name'],
+                    'screen_name' => $params['screen_name'],
                     'profile_image' => basename($file_name),
                     'email'         => $params['email'],
                 ]);
@@ -100,6 +102,7 @@ class User extends Authenticatable
             $this::where('id', $this->id)
                 ->update([
                     'name'          => $params['name'],
+                    'screen_name' => $params['screen_name'],
                     'email'         => $params['email'],
                 ]); 
         }

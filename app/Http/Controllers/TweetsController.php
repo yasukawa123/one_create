@@ -57,11 +57,15 @@ class TweetsController extends Controller
         $validator = Validator::make($data, [  
             'title' => ['required', 'string'],
             'price' => ['required', 'integer'],
-            // 'tweets_image' => ['file', 'image', 'mimes:jpeg,png,jpg', 'max:2048'],
-            'tweets_image' => ['file', 'image', 'mimes:jpeg,png,jpg'],  //追加③
-            'text' => ['required', 'string', 'max:140']
+            // 'tweets_image' => ['file', 'image', 'mimes:jpeg,png,jpg'],  //追加③
+            'text' => ['required', 'string', 'max:500']
         ]);
 
+        if(request('tweets_image')){
+            $filename=request()->file('tweets_image')->getClientOriginalName();
+            $data['tweets_image']=request('image')->storeAs('public/images', $filename);
+        }
+          
         $validator->validate();
         $tweet->tweetStore($user->id, $data);
 
@@ -119,10 +123,10 @@ class TweetsController extends Controller
     {
         $data = $request->all();
         $validator = Validator::make($data, [
-            'title' => ['required', 'string'], //追加③
-            'price' => ['required', 'integer'], //追加③
-            'tweets_image' => ['file', 'image', 'mimes:jpeg,png,jpg'],  //追加したい③
-            'text' => ['required', 'string', 'max:140']
+            'title' => ['required', 'string'],
+            'price' => ['required', 'integer'],
+            // 'tweets_image' => ['file', 'image', 'mimes:jpeg,png,jpg'],  //追加したい③
+            'text' => ['required', 'string', 'max:1000']
         ]);
 
         $validator->validate();
