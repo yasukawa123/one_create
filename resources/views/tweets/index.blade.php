@@ -39,22 +39,6 @@
   <a href="{{ url('users') }}">＜ ユーザ一覧へ  ＞<i class="fas fa-users" class="fa-fw"></i> </a>
 </div>
   
-  {{-- ①foreachで回す --}}
-  {{-- <div class="project_box">
-    <!--カード① START-->
-    <div class="project-card">
-      <div class="project-inner">
-        <img class="projectimage" src="images/table.png" alt="table">
-      </div>
-        <h3 class="project-title">テーブル作成</h3>
-        <div class="price">\2000</div>
-        <p>テーブルの作成依頼お願いいたします。</p>
-        <div class="user-id">wataru00</div>
-      <div class="here">👍 10</div>
-    </div>
-    <!--カード① END--> 
-  </div> --}}
-
 <div class="project_box">
 <!--カード① START-->
 @if (isset($timelines))
@@ -62,10 +46,11 @@
     <div class="project-card">
       <a href="{{ url('tweets/' .$timeline->id) }}">
         <div class="project-inner">
-          <img class="projectimage" src="{{ asset('storage/tweets_image/3dimage.jpg') }}" width="100%" height="auto">
-          {{-- <img class="projectimage" src="{{ asset('storage/tweets_image/' .$timeline->tweets_image) }}" alt="" style="width:50px” height:auto; vertical-align:middle;"> --}}
-          {{-- <img src="{{ asset('storage/twees_image/' .$timeline->user->profile_image) }}" class="rounded-circle" width="50" height="50"> --}}
-          {{-- <img src="{{ asset('storage/tweets_image/' .$timeline->tweets_image) }}" class="rounded-circle" width="50" height="50"> --}}
+          @if (isset( $timeline->tweets->tweets_image ))
+            <img class="projectimage" src="{{ asset('storage/tweets_image/noimage.png') }}" alt="tweets_image">
+          @else
+            <img class="projectimage" src="{{ asset('storage/tweets_image/' .$timeline->tweets_image) }}" alt="tweets_image">
+          @endif
         </div>
       </a>
 

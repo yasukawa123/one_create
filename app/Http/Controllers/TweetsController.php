@@ -54,18 +54,14 @@ class TweetsController extends Controller
     {
         $user = auth()->user();
         $data = $request->all();
+
         $validator = Validator::make($data, [  
             'title' => ['required', 'string'],
             'price' => ['required', 'integer'],
-            // 'tweets_image' => ['file', 'image', 'mimes:jpeg,png,jpg'],  //追加③
-            'text' => ['required', 'string', 'max:500']
+            'text' => ['required', 'string', 'max:1000'],
+            'tweets_image' => ['file', 'image', 'mimes:jpeg,png,jpg']   //いらない？
         ]);
 
-        if(request('tweets_image')){
-            $filename=request()->file('tweets_image')->getClientOriginalName();
-            $data['tweets_image']=request('image')->storeAs('public/images', $filename);
-        }
-          
         $validator->validate();
         $tweet->tweetStore($user->id, $data);
 
@@ -128,7 +124,7 @@ class TweetsController extends Controller
             // 'tweets_image' => ['file', 'image', 'mimes:jpeg,png,jpg'],  //追加したい③
             'text' => ['required', 'string', 'max:1000']
         ]);
-
+        
         $validator->validate();
         $tweet->tweetUpdate($tweet->id, $data);
 

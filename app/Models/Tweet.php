@@ -17,10 +17,10 @@ class Tweet extends Model
      * @var array
      */
     protected $fillable = [
-        'tweets_image',  //実装したい⑤
         'title',
         'price',
-        'text'
+        'text',
+        'tweets_image'  //実装したい⑤
     ];
 
     public function user()
@@ -69,22 +69,17 @@ class Tweet extends Model
         $this->text = $data['text'];
         $this->title = $data['title'];
         $this->price = $data['price'];
-        // $this->tweets_image = $data['tweets_image'];
+        $this->tweets_image = $data['tweets_image'];
         $this->save();
 
-        
-        // if (isset($data['tweets_image'])) {
-        //     $file_name = $data['tweets_image']->store('public/tweets_image/');
-        //     $this::where('id', $this->id)
-        //         ->update([
-        //             'tweets_image' => basename($file_name),
-        //         ]);
-        // } else {
-        //     $this::where('id', $this->id)
-        //         ->update([
-        //             // 'tweets_image' => null;
-        //         ]); 
-        // }
+        if (isset($data['tweets_image'])){
+            $file_name = $data['tweets_image']->store('public/tweets_image/');
+
+            $this::where('id', $this->id)
+                ->update([
+                    'tweets_image' => basename($file_name),
+                ]); 
+        }
 
         return;
     }
@@ -102,8 +97,27 @@ class Tweet extends Model
         $this->text = $data['text'];
         $this->title = $data['title'];
         $this->price = $data['price'];
-        // $this->tweets_image = $data['tweets_image']; //実装したい⑤
+        $this->tweets_image = $data['tweets_image'] ->store('public/tweets_image/');
         $this->update();
+
+        // if (isset($data['tweets_image'])){
+        //     $file_name = $data['tweets_image']->store('public/tweets_image/' .$name);
+
+        //     $this::where('tweet_id', $this->id)
+        //         ->update([
+        //             'title' => $data['title'],
+        //             'tweets_image' => basename($file_name),
+        //             'price' => $data['price'],
+        //             'text' => $data['text'],                    
+        //         ]);
+        // } else {
+        //     $this::where('tweet_id', $this->id)
+        //         ->update([
+        //             'title' => $data['title'],
+        //             'price' => $data['price'],
+        //             'text' => $data['text'],                    
+        //         ]);
+        // }
 
         return;
     }

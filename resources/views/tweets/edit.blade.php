@@ -28,6 +28,10 @@
                             </div>
                             <p class="mb-1">タイトル</p>
                                 <input id="title" name="title" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }} "value="{{ old('title')? : $tweets->title }} "type="text">
+                            <p class="mb-1">画像</p>   
+                            <input type="file" name="tweets_image" autocomplete="tweets_image">
+
+                                {{-- <input id="tweets_image" type="file" name="tweets_image" class="form-control {{ $errors->has('tweets_image') ? 'is-invalid' : '' }}" value="{{ old('tweets_image') }}"> --}}
                             <p class="mb-1">金額</p>
                                 <input id="price" name="price" class="form-control {{ $errors->has('price') ? 'is-invalid' : '' }}" value="{{ old('price')? : $tweets->price }}" type="price">
                             <p class="mb-1">依頼内容</p>
@@ -38,9 +42,9 @@
                                 </span>
                             @enderror
                         </div>
-                        <p class="mb-2">500文字以内</p>
+                        <p class="mb-2">1000文字以内</p>
                         <button type="submit" class="btn btn-primary">
-                            ツイートする
+                            変更する
                         </button>
                     </form>
                 </div>
