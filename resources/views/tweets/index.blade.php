@@ -47,7 +47,7 @@
       <a href="{{ url('tweets/' .$timeline->id) }}">
         <div class="project-inner">
           @if (isset( $timeline->tweets->tweets_image ))
-            <img class="projectimage" src="{{ asset('storage/tweets_image/noimage.png') }}" alt="tweets_image">
+            <img class="projectimage" src="{{ asset('storage/default_image/noimage.png') }}" alt="tweets_image">
           @else
             <img class="projectimage" src="{{ asset('storage/tweets_image/' .$timeline->tweets_image) }}" alt="tweets_image">
           @endif
@@ -96,10 +96,33 @@
             コメント
           ---------------}}
           <a href="{{ url('tweets/' .$timeline->id) }}">
-            <p><img class="comment_image" src="{{ asset('storage/tweets_image/comment_image.png') }}"></p>
-            {{-- <p class="comment_count">{{ count($timeline->comments) }}</p> --}}
+            <p><img class="comment_image" src="{{ asset('storage/default_image/comment_image.png') }}"></p>
+            <p class="comment_count">{{ count($timeline->comments) }}</p>
           </a>
         </div>
+        {{---------------
+            お気に入り
+          ---------------}}
+        <!-- ここから -->
+        <div class="d-flex align-items-center">
+          @if (!in_array($user->id, array_column($timeline->favorites->toArray(), 'user_id'), TRUE))
+              <form method="POST" action="{{ url('favorites/') }}" class="mb-0">
+                  @csrf
+
+                  <input type="hidden" name="tweet_id" value="{{ $timeline->id }}">
+                  <button type="submit" class="btn p-0"><img class="comment_image" src="{{ asset('storage/default_image/favorites.png') }}"><i class="far fa-heart fa-fw"></i></button>
+              </form>
+          @else
+              <form method="POST" action="{{ url('favorites/' .array_column($timeline->favorites->toArray(), 'id', 'user_id')[$user->id]) }}" class="mb-0">
+                  @csrf
+                  @method('DELETE')
+
+                  <button type="submit" class="btn p-0 "><img class="comment_image" src="{{ asset('storage/default_image/favorites.png') }}"><i class="fas fa-heart fa-fw"></i></button>
+              </form>
+          @endif
+          <p class="mb-0 text-secondary">{{ count($timeline->favorites) }}</p>
+      </div>
+      <!-- ここまで -->
         {{---------------
           ★★お気に入り　未実装でもいいかも
         ---------------}}

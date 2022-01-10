@@ -67,6 +67,10 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resource('tweets', 'App\Http\Controllers\TweetsController', ['only' => ['index', 'create', 'store', 'show', 'edit', 'update', 'destroy']]);
     // コメント関連
     Route::resource('comments', 'App\Http\Controllers\CommentsController', ['only' => ['store']]);
+
+    // いいね機能　一応作っておく
+    // Route::resource('favorites', 'FavoritesController', ['only' => ['store', 'destroy']]);
+    Route::resource('favorites', 'App\Http\Controllers\FavoritesController', ['only' => ['store', 'destroy']]);
 });
 
 

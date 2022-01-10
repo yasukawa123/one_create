@@ -74,6 +74,26 @@
                                 <p class="mb-0 text-secondary">{{ $comment->created_at->format('Y-m-d H:i') }}</p>
                             </div>
                         </div>
+                        <!-- ここから お気に入り-->
+                    <div class="d-flex align-items-center">
+                        @if (!in_array($user->id, array_column($tweet->favorites->toArray(), 'user_id'), TRUE))
+                            <form method="POST" action="{{ url('favorites/') }}" class="mb-0">
+                                @csrf
+
+                                <input type="hidden" name="tweet_id" value="{{ $tweet->id }}">
+                                <button type="submit" class="btn p-0 border-0 text-primary"><i class="far fa-heart fa-fw"></i></button>
+                            </form>
+                        @else
+                            <form method="POST" action="{{ url('favorites/' .array_column($tweet->favorites->toArray(), 'id', 'user_id')[$user->id]) }}" class="mb-0">
+                                @csrf
+                                @method('DELETE')
+
+                                <button type="submit" class="btn p-0 border-0 text-danger"><i class="fas fa-heart fa-fw"></i></button>
+                            </form>
+                        @endif
+                        <p class="mb-0 text-secondary">{{ count($tweet->favorites) }}</p>
+                    </div>
+                    <!-- ここまで お気に入り -->
                         <div class="py-3">
                             {!! nl2br(e($comment->text)) !!}
                         </div>
@@ -107,6 +127,7 @@
                                     @enderror
                                 </div>
                             </div>
+                            
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-12 text-right">
