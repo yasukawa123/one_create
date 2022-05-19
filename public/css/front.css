@@ -1,0 +1,207 @@
+/* -----------------------
+  ホームページレイアウト
+------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", メイリオ, Meiryo, "ＭＳ Ｐゴシック", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #fff;
+  letter-spacing : 0.2em;
+}
+.container-header-line {
+  box-shadow:0 0 10px #dddddd;
+  background-color: white;
+}
+.container-footer-line {
+  margin-top: 100px;
+  box-shadow:0 0 10px #dddddd;
+  background-color: white;
+}
+.container {
+  margin: 0 auto;
+  max-width:1080px;
+}
+
+/* span {
+  box-shadow: lightsalmon;
+  color: #ff26fb;
+} */
+
+/* -----------------------
+ヘッダーレイアウト 
+------------------------*/
+header {
+  padding: 15px 0 15px ;
+  /* position: fixed; */
+  top: 0;
+  width: 100%;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+}
+header .left {
+  width:50%;
+  text-align: left;
+  padding-left: 10px ;
+}
+header .right {
+  width:50%;
+  text-align: right;
+  padding-right: 20px ;
+}
+.header-profile-image {
+  width:40px;
+  height:40px;
+  vertical-align:middle;
+  border-radius: 20px;
+}
+
+/* 左側ロゴ */
+h1.logo {
+  margin: 0; 
+  padding: 0;
+  font-size: 20px;
+	background: -webkit-linear-gradient(left, #ff26fb, #00b3ff); 
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 20px;
+  text-shadow: 3px 3px 10px #dddddd;
+}
+a {	
+  text-decoration: none;
+  color: lightslategray;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  /* display: flex; */
+}
+li {
+  /* margin: 0 0 0 15px; */
+  font-size: 14px;
+}
+
+/* 背景に画像を入れたい場合 */
+.main-visual h2 {
+  margin: 0;
+  font-size: 80px;
+  font-weight: bold; 
+  background: -webkit-linear-gradient(left, #ff26fb, #00b3ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family:  sans-serif;
+  text-shadow: 1px 4px 80px #dddddd;
+  position: absolute;
+  text-align: center;
+  width:100%;
+}
+
+/* クリエイター風グラデーション */
+/* p.toptitle {
+	background: -webkit-linear-gradient(left, #ff26fb, #00b3ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 30px;
+} */
+
+/* 右側ロゴ */
+ul.header-dropmenu {
+  float: right;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  display: table;
+  table-layout: fixed;
+}
+ul.header-dropmenu > li {
+  position: relative;
+  display: table-cell;
+  vertical-align: middle;
+  /* border: 1px solid #f8f8f8; */
+}
+ul.header-dropmenu li a {
+  display: block;
+  text-align: left;
+  line-height: 40px;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 14px;
+}
+ul.header-dropmenu li ul {
+  visibility: hidden;
+  width: 100%;
+  list-style: none;
+  position: absolute;
+  top: 100%;
+  left: -1px;
+  margin: 0;
+  padding: 0;
+  /* border: 1px solid #222; マウスオーバー時の枠線 */
+  border-top: none;
+}
+ul.header-dropmenu li:hover ul {
+  visibility: visible;
+}
+ul.header-dropmenu li ul li {
+  background: #fff;
+  transition: all .2s ease;
+}
+ul.header-dropmenu > li:hover {
+  background: #fff;
+  /* border: 1px solid #222; マウスオーバー時の枠線 */
+  border-bottom: none;
+}
+ul.header-dropmenu li:hover ul li:hover {
+  background: #f8f8f8;
+}
+
+/* -----------------------
+フッターレイアウト 
+------------------------*/
+footer {
+  height:100%;
+  padding: 50px  5px 100px;
+  top: 0;
+  width: 100%;
+  background-color: transparent;
+  display: flex;
+}
+footer .left {
+  width:33.3%;
+  text-align: left;
+}
+footer .center {
+  width:33.3%;
+  text-align: left;
+}
+footer .right {
+  width:33.3%;
+  text-align: right;
+}
+.copyright p{
+  text-align: center;
+  font-size: 12px;
+  padding: 30px 0;
+}
+
+/* -----------------------
+フッター文字色
+------------------------*/
+footer .left p ul li {
+  color: lightslategray;
+  list-style: none;
+}
+footer .center p ul li {
+  color: lightslategray;
+  list-style: none;
+}
+footer .right {
+  width:33.3%;
+  text-align: right;
+}
